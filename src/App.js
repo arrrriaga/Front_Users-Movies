@@ -1,43 +1,41 @@
+import { useState, useEffect } from "react";
+import PublicRoutesComponent from "./routes/PublicRoutesComponent";
+
 import "./App.css";
-import axios from "axios";
-import { useState } from "react";
+import { Container } from "react-bootstrap";
+
+import NavComponent from "./components/Nav";
 
 function App() {
-  const [form, setForm] = useState({
-    correo: " ",
-    password: " ",
-  });
+  const [token, setToken] = useState(null);
 
-  const onChange = (event) => {
-    setForm({
-      ...form,
-      [event.target.name]: event.target.value,
-    });
+  const guardarToken = (newToken) => {
+    setToken(newToken);
+    localStorage.setItem("token", newToken);
   };
 
-  const login = async () => {
-    const { data } = await axios.post(
-      "https://users-2lcqjx55x-arrrriaga.vercel.app/v1/user/login",
-      form
-    );
-    console.log(data);
+  const borrarToken = () => {
+    setToken(null);
+    localStorage.clear();
   };
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      guardarToken(token);
+    }
+  }, []);
   return (
-    <div className="App">
-      <input
-        type="email"
-        placeholder="correo"
-        name="correo"
-        onChange={onChange}
-      />
-      <input
-        type="password"
-        placeholder="password"
-        name="password"
-        onChange={onChange}
-      />
-      <button onClick={login}>Guardar</button>
-    </div>
+    <>
+      <Container>
+        <NavComponent token={token} />
+        <PublicRoutesComponent
+          guardarToken={guardarToken}
+          borrarToken={borrarToken}
+          token={token}
+        />
+      </Container>
+    </>
   );
 }
 
