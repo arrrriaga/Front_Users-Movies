@@ -1,8 +1,11 @@
+import { useContext } from "react";
 import { Nav, Navbar } from "react-bootstrap";
+import { UserContext } from "../context/UserContext";
 
 import { Link } from "react-router-dom";
 
-const NavComponent = ({ token }) => {
+const NavComponent = () => {
+  const { user: token } = useContext(UserContext);
   const publicRoutes = [
     <Nav.Link as={Link} to="/registro" key={0}>
       Registro

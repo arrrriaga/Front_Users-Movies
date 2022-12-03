@@ -1,23 +1,13 @@
-import { useState, useEffect } from "react";
+import { useEffect, useContext } from "react";
 import PublicRoutesComponent from "./routes/PublicRoutesComponent";
+import NavComponent from "./components/Nav";
+import { Container } from "react-bootstrap";
+import { UserContext } from "./context/UserContext";
 
 import "./App.css";
-import { Container } from "react-bootstrap";
-
-import NavComponent from "./components/Nav";
 
 function App() {
-  const [token, setToken] = useState(null);
-
-  const guardarToken = (newToken) => {
-    setToken(newToken);
-    localStorage.setItem("token", newToken);
-  };
-
-  const borrarToken = () => {
-    setToken(null);
-    localStorage.clear();
-  };
+  const { guardarToken } = useContext(UserContext);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -28,12 +18,8 @@ function App() {
   return (
     <>
       <Container>
-        <NavComponent token={token} />
-        <PublicRoutesComponent
-          guardarToken={guardarToken}
-          borrarToken={borrarToken}
-          token={token}
-        />
+        <NavComponent />
+        <PublicRoutesComponent />
       </Container>
     </>
   );
