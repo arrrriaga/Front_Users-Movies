@@ -1,20 +1,22 @@
 import { useContext } from "react";
-import { Nav, Navbar } from "react-bootstrap";
+import { Nav, Navbar, Container } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
 
-import { Link } from "react-router-dom";
-
 const NavComponent = () => {
-  const { user: token } = useContext(UserContext);
+  const {
+    user: { token },
+  } = useContext(UserContext);
   const publicRoutes = [
-    <Nav.Link as={Link} to="/registro" key={0}>
-      Registro
-    </Nav.Link>,
-    <Nav.Link as={Link} to="/login" key={1}>
+    <Nav.Link as={Link} to="/login" key={0}>
       Login
     </Nav.Link>,
+    <Nav.Link as={Link} to="/registro" key={1}>
+      Registro
+    </Nav.Link>,
   ];
-  const privateRoutes = [
+
+  const privRoutes = [
     <Nav.Link as={Link} to="/about" key={0}>
       About
     </Nav.Link>,
@@ -25,16 +27,18 @@ const NavComponent = () => {
 
   return (
     <Navbar bg="light" expand="lg">
-      <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="me-auto">
-          <Nav.Link as={Link} to="/" key={0}>
-            Home
-          </Nav.Link>
-          {token ? privateRoutes : publicRoutes}
-        </Nav>
-      </Navbar.Collapse>
+      <Container>
+        <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
+            <Nav.Link as={Link} to="/">
+              Home
+            </Nav.Link>
+            {token ? privRoutes : publicRoutes}
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
     </Navbar>
   );
 };

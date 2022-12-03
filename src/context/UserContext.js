@@ -1,21 +1,20 @@
 import { useState, createContext } from "react";
 
-// !1.- Crear el contexto para el usuario
+// ! 1.- Crear el contexto para el usuario
 const UserContext = createContext();
 
-// !2.- Obtener Provider (contiene el estado global)
+//! 2.- Vamos a obtener al Provider del UserContext
 const { Provider } = UserContext;
 
-// !3.- Crear componente donde utilizaremos nuestros estados
+//! 3.- Crear componente
 const UserProvider = ({ children }) => {
-  // !4.- Creamos nuestro estado global
+  //! 4.- Creamos nuestro estado global
   const initialState = {
     token: null,
   };
   const [user, setUser] = useState(initialState);
 
-  // !5.- Manejar el estado
-
+  //! 5.- Manejar el estado
   const guardarToken = (newToken) => {
     setUser({
       ...user,
@@ -24,18 +23,18 @@ const UserProvider = ({ children }) => {
     localStorage.setItem("token", newToken);
   };
 
-  const borrarToken = () => {
+  const borrarInfoUser = () => {
     setUser(initialState);
     localStorage.clear();
   };
 
-  // !6 Retornamos el componnete
+  //! 6.- Retornamos el componente
   return (
     <Provider
       value={{
         user,
         guardarToken,
-        borrarToken,
+        borrarInfoUser,
       }}
     >
       {children}
@@ -43,5 +42,5 @@ const UserProvider = ({ children }) => {
   );
 };
 
-// !7.- Exportamos provider y context
-export { UserContext, UserProvider };
+//! 7.- Exportamos provider & context
+export { UserProvider, UserContext };

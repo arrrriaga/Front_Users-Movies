@@ -1,5 +1,26 @@
+import { useEffect, useContext } from "react";
+import { PeliculaContext } from "../context/PeliculaContext";
+import { verPeliculas } from "../services";
 const PeliculasPage = () => {
-  return <h1>Peliculas</h1>;
+  const { peliculas, guardarPeliculas } = useContext(PeliculaContext);
+
+  const getPeliculas = async () => {
+    const { data } = await verPeliculas();
+    guardarPeliculas(data);
+  };
+
+  useEffect(() => {
+    getPeliculas();
+  }, []);
+  return (
+    <ul>
+      {peliculas.map((pelicula, index) => (
+        <li key={index}>
+          {pelicula.nombre} - {pelicula.año}
+        </li>
+      ))}
+    </ul>
+  );
 };
 
 export default PeliculasPage;
