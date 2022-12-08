@@ -19,7 +19,7 @@ const LoginPage = () => {
     const { detalles: token, error } = await login(data);
     if (error) {
       //alert(error);
-      setErrorMessage(error);
+      setErrorMessage("Verifica tus credenciales: " + error);
     } else {
       guardarToken(token);
       setErrorMessage(null);
@@ -47,9 +47,7 @@ const LoginPage = () => {
           placeholder="Ingresa tu contraseña"
           name="password"
         />
-        <label style={{ color: "red" }}>
-          Verifica tus credenciales: {errorMessage}
-        </label>
+        <label style={{ color: "red" }}>{errorMessage}</label>
       </Form.Group>
 
       <Button variant="primary" type="submit">

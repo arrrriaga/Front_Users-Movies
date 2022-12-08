@@ -11,6 +11,7 @@ const PeliculasPage = () => {
 
   useEffect(() => {
     getPeliculas();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <ul>
