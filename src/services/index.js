@@ -1,2 +1,4 @@
-export { login } from "./User";
-export { verPeliculas } from "./Peliculas";
+import { login } from "./User";
+import { verPeliculas } from "./Peliculas";
+
+export { login, verPeliculas };
