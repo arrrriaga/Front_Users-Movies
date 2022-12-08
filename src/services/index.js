@@ -1,2 +1,2 @@
-export { login } from "./User.js";
+export { login } from "./User";
 export { verPeliculas } from "./Peliculas";
