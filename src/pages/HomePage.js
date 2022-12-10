@@ -1,5 +1,7 @@
+import { Link } from "react-router-dom";
+
 const HomePage = () => {
-  return <h1>Home</h1>;
+  return <Link to="/login">Iniciar sesión</Link>;
 };
 
 export default HomePage;

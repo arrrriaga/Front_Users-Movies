@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { Nav, Navbar, Container } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
 
 const NavComponent = () => {
@@ -20,8 +20,8 @@ const NavComponent = () => {
     <Nav.Link as={Link} to="/about" key={0}>
       About
     </Nav.Link>,
-    <Nav.Link as={Link} to="/peliculas" key={1}>
-      Peliculas
+    <Nav.Link as={Link} to="/logout" key={1}>
+      Cerrar sesión
     </Nav.Link>,
   ];
 
