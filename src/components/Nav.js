@@ -23,7 +23,10 @@ const NavComponent = () => {
     <Nav.Link as={Link} to="/about" key={1}>
       About
     </Nav.Link>,
-    <Nav.Link as={Link} to="/logout" key={2}>
+    <Nav.Link as={Link} to="/cart" key={2}>
+      Carrito
+    </Nav.Link>,
+    <Nav.Link as={Link} to="/logout" key={3}>
       Cerrar sesión
     </Nav.Link>,
   ];

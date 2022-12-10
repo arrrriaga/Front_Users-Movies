@@ -8,6 +8,7 @@ import PeliculasPage from "../pages/PeliculasPage";
 import HomePage from "../pages/HomePage";
 import Logout from "../components/Logout";
 import ProfilePage from "../pages/ProfilePage";
+import CartPage from "../pages/CartPage";
 
 const PublicRoutesComponent = () => {
   const {
@@ -23,6 +24,7 @@ const PublicRoutesComponent = () => {
       {token && <Route path="/peliculas" element={<PeliculasPage />} />}
       {token && <Route path="/logout" element={<Logout />} />}
       {token && <Route path="/profile" element={<ProfilePage />} />}
+      {token && <Route path="/cart" element={<CartPage />} />}
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
