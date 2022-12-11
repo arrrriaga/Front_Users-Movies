@@ -1,7 +1,6 @@
 import { Table } from "react-bootstrap";
 
 const ProductList = ({ peliculas, total }) => {
-  console.log(peliculas);
   return (
     <Table striped bordered hover size="sm">
       <thead>

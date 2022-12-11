@@ -1,22 +1,19 @@
 import { Col, Row } from "react-bootstrap";
-import PaypalButtons from "../components/PaypalButtons";
 import ProductList from "../components/ProductList";
 import { useContext } from "react";
 import { PeliculaContext } from "../context/PeliculaContext";
 
 const CartPage = () => {
-  const { peliculas } = useContext(PeliculaContext);
-  const total = peliculas.reduce(
+  const { carrito } = useContext(PeliculaContext);
+  console.log(carrito);
+  const total = carrito.reduce(
     (acumulador, valor) => (acumulador = acumulador + valor.price),
     0
   );
   return (
     <Row>
       <Col>
-        <ProductList peliculas={peliculas} total={total} />
-      </Col>
-      <Col>
-        <PaypalButtons currency="MXN" amount={total} />
+        <ProductList peliculas={carrito} total={total} />
       </Col>
     </Row>
   );

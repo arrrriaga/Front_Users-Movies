@@ -6,7 +6,6 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { UserProvider } from "./context/UserContext";
 import { PeliculaProvider } from "./context/PeliculaContext";
-import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -15,16 +14,7 @@ root.render(
   <BrowserRouter>
     <UserProvider>
       <PeliculaProvider>
-        <PayPalScriptProvider
-          options={{
-            "client-id":
-              "AZc7yPXHg2IevIKYWE87PZ40fLhlf-0lFkUNpq7vK4BcSgI-WtfMaBhrMeSsKNtn3HbPtzeOQH0YiLMR",
-            components: "buttons",
-            currency: "undefined",
-          }}
-        >
-          <App />
-        </PayPalScriptProvider>
+        <App />
       </PeliculaProvider>
     </UserProvider>
   </BrowserRouter>
