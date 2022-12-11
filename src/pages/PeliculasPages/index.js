@@ -23,6 +23,16 @@ const PeliculasPage = ({ columns }) => {
           key={index}
           className={`col-${12 / columns}`}
         >
+          {/* <div
+            style={{
+              width: "100%",
+              height: "200px",
+              backgroundImage: `url(${pelicula.img})`,
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "cover",
+              backgroundPositionX: '50%',
+            }}
+          />  */}
           <Card.Img className="imgCard" variant="top" src={pelicula.img} />
           <Card.Body>
             <Card.Title>{pelicula.nombre}</Card.Title>
