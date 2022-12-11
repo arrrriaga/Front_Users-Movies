@@ -10,9 +10,18 @@ const { Provider } = PeliculaContext;
 const PeliculaProvider = ({ children }) => {
   //! 4.- Creamos nuestro estado global
   const [peliculas, setPeliculas] = useState([]);
+  const [carrito, setCarrito] = useState([]);
 
   //! 5.- Manejar el estado
   const guardarPeliculas = (newPeliculas) => setPeliculas(newPeliculas);
+
+  const agregarACarrito = (pelicula) => setCarrito([...carrito, pelicula]);
+  const eliminarDeCarrito = (index) => {
+    const newCarrito = [...carrito];
+    newCarrito.splice(index, 1);
+    setCarrito(newCarrito);
+  };
+  const limpiarCarrito = () => setCarrito([]);
 
   //! 6.- Retornamos el componente
   return (
@@ -20,6 +29,10 @@ const PeliculaProvider = ({ children }) => {
       value={{
         peliculas,
         guardarPeliculas,
+        carrito,
+        agregarACarrito,
+        eliminarDeCarrito,
+        limpiarCarrito,
       }}
     >
       {children}

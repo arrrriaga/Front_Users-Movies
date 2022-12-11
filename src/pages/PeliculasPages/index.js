@@ -1,8 +1,9 @@
 import { useEffect, useContext } from "react";
-import { PeliculaContext } from "../context/PeliculaContext";
-import { verPeliculas } from "../services";
-import { Card, Button } from "react-bootstrap";
-const PeliculasPage = (columns) => {
+import { PeliculaContext } from "../../context/PeliculaContext";
+import { verPeliculas } from "../../services";
+import { Card, Button, Row } from "react-bootstrap";
+import "./style.css";
+const PeliculasPage = ({ columns }) => {
   const { peliculas, guardarPeliculas } = useContext(PeliculaContext);
 
   const getPeliculas = async () => {
@@ -15,14 +16,14 @@ const PeliculasPage = (columns) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
-    <div className="row">
+    <Row>
       {peliculas.map((pelicula, index) => (
         <Card
           style={{ margin: "15px" }}
           key={index}
-          className={`col-${12 / 4}`}
+          className={`col-${12 / columns}`}
         >
-          <Card.Img variant="top" src={pelicula.img} />
+          <Card.Img className="imgCard" variant="top" src={pelicula.img} />
           <Card.Body>
             <Card.Title>{pelicula.nombre}</Card.Title>
             <Card.Text>
@@ -43,7 +44,7 @@ const PeliculasPage = (columns) => {
           </Card.Footer>
         </Card>
       ))}
-    </div>
+    </Row>
   );
 };
 
